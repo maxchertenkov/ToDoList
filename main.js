@@ -29,3 +29,18 @@ function appendContent(inputcontent) {
 	let listLine = document.querySelector("ul").lastChild
 	listLine.querySelector("p").innerHTML = inputcontent
 }
+
+document.addEventListener("click", function completeRemoveTask() {
+		let target = event.target
+		if (target.className == "complete") {
+			console.log("1")
+		}
+		if (target.className == "delete") {
+			var listitem = target.parentNode
+			listitem.parentNode.removeChild(listitem);
+			let list = document.querySelector("ul")
+			if (list.childNodes.length == 1) {
+				list.setAttribute("hidden", "")
+			}
+		}
+})
