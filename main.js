@@ -4,7 +4,7 @@ document.addEventListener("submit",  function getContents() {
 		event.preventDefault();
 		let input = document.querySelector("input[type=text]")
 		appendListLine() 
-		
+		appendContent(input.value)
 		input.value = ""
 })
 
@@ -23,4 +23,9 @@ function appendListLine() {
 	btn1.innerHTML = "&#10003;"
 	btn2.classList.add("delete")
 	btn2.innerHTML = "&#10006;"
+}
+
+function appendContent(inputcontent) {
+	let listLine = document.querySelector("ul").lastChild
+	listLine.querySelector("p").innerHTML = inputcontent
 }
