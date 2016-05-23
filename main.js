@@ -1,11 +1,11 @@
 "use strict"
 
 document.addEventListener("submit",  function getContents() {
-		event.preventDefault();
-		let input = document.querySelector("input[type=text]")
-		appendListLine() 
-		appendContent(input.value)
-		input.value = ""
+	event.preventDefault();
+	let input = document.querySelector("input[type=text]")
+	appendListLine() 
+	appendContent(input.value)
+	input.value = ""
 })
 
 function appendListLine() {
@@ -31,16 +31,16 @@ function appendContent(inputcontent) {
 }
 
 document.addEventListener("click", function completeRemoveTask() {
-		let target = event.target
-		if (target.className == "complete") {
-			console.log("1")
+	let target = event.target
+	if (target.className == "complete") {
+		console.log("1")
+	}
+	if (target.className == "delete") {
+		var listitem = target.parentNode
+		listitem.parentNode.removeChild(listitem);
+		let list = document.querySelector("ul")
+		if (list.childNodes.length == 1) {
+			list.setAttribute("hidden", "")
 		}
-		if (target.className == "delete") {
-			var listitem = target.parentNode
-			listitem.parentNode.removeChild(listitem);
-			let list = document.querySelector("ul")
-			if (list.childNodes.length == 1) {
-				list.setAttribute("hidden", "")
-			}
-		}
+	}
 })
