@@ -1,0 +1,89 @@
+body {
+	background:#f1f1f1;
+	font-family:arial, serif;
+}
+section {
+	width: 600px;
+    margin: 100px auto 0;
+    text-align: center;
+}
+h1 {
+	text-transform:uppercase;
+	font-size:75px;
+	font-weight:bold;
+	color:#4A4A4A;
+}
+form {
+	border-radius: 25px;
+    border: none;
+    width: 450px;
+    background: #fff;
+    margin: 25px auto;
+}
+input[type="text"] {
+    height: 35px;
+    width: 350px;
+    border: none;
+    outline: none;
+    padding-left: 35px;
+}
+input[type="submit"] {
+	background: none;
+    border: none;
+	color:#fff;
+    border-radius: 15px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+	 -webkit-transition: border 0.5s ease, color 0.5s ease;
+     -moz-transition: border 0.5s ease, color 0.5s ease;
+     -o-transition: border 0.5s ease, color 0.5s ease;
+     transition: border 0.5s ease, color 0.5s ease;
+}
+input[type="submit"]:hover {
+	border: 1px solid #000;
+	color:#000;
+}
+ul {
+    width: 400px;
+    margin: 10px auto 0;
+    background: #fff;
+    border-radius: 10px;
+    padding:10px 25px;
+}
+ul li {
+	margin-top:10px;
+	padding-bottom:7px;
+	border-bottom:2px solid #DCDCDC;
+}
+ul li p {
+    float: left;
+    color: #4A4A4A;
+    font-size: 17px;
+    line-height: 30px;
+    width: 325px;
+    text-align: left;
+    height: 25px;
+}
+ul li button {
+	background: none;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 15px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+	 -webkit-transition: border 0.5s ease, color 0.5s ease;
+     -moz-transition: border 0.5s ease, color 0.5s ease;
+     -o-transition: border 0.5s ease, color 0.5s ease;
+     transition: border 0.5s ease, color 0.5s ease;
+	 margin:0 5px;
+}
+ul li .complete:hover {
+	border: 1px solid green;
+	color:green;
+}
+ul li .delete:hover {
+	border: 1px solid red;
+	color:red;
+}
