@@ -55,6 +55,7 @@ ul li {
 	margin-top:10px;
 	padding-bottom:7px;
 	border-bottom:2px solid #DCDCDC;
+	height: 25px;
 }
 ul li p {
     float: left;
@@ -86,4 +87,19 @@ ul li .complete:hover {
 ul li .delete:hover {
 	border: 1px solid red;
 	color:red;
+}
+.completed {
+	position:relative;
+}
+.completed p {
+	color:#D6CFCF;
+}
+.completed:after {
+    content: "";
+    display: block;
+    width: 400px;
+    height: 2px;
+    background-color: #CCC5C5;
+    position: absolute;
+    top: 14px;
 }
