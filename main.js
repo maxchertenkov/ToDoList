@@ -4,6 +4,11 @@
 
 var task = {}
 var stask
+var rettask
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  checkLocalStorage()
+})
 
 document.addEventListener("submit",  function getContents() {
 		event.preventDefault();
@@ -38,8 +43,9 @@ document.addEventListener("click", function completeRemoveTask() {
 		}
 })
 
+
 function appendListLine() {
-	let list = document.querySelector("ul")
+	var list = document.querySelector("ul")
 	list.removeAttribute("hidden")
 	var li = document.createElement("li");
 	var p = document.createElement("p");
@@ -68,3 +74,11 @@ function addToLocalStorage (content) {
 		localStorage.setItem(id, stask)
 }
 
+function checkLocalStorage() {
+	for (var i = 0; i < localStorage.length; i++) {
+		rettask = JSON.parse(localStorage.getItem(localStorage.key(i)))
+		appendListLine() 
+		appendContent(rettask.content)
+		rettask = ""
+	}
+}
