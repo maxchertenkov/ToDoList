@@ -2,6 +2,9 @@
 	
 "use strict"
 
+var task = {}
+var stask
+
 document.addEventListener("submit",  function getContents() {
 		event.preventDefault();
 		let input = document.querySelector("input[type=text]")
@@ -56,3 +59,12 @@ function appendContent(inputcontent) {
 	let listLine = document.querySelector("ul").lastChild
 	listLine.querySelector("p").innerHTML = inputcontent
 }
+
+function addToLocalStorage (content) {
+		task.content = content
+		task.status = 'active'
+		stask = JSON.stringify(task)
+		var id = 'task' + (localStorage.length + 1)
+		localStorage.setItem(id, stask)
+}
+
