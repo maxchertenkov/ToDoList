@@ -36,6 +36,7 @@ document.addEventListener("click", function completeRemoveTask() {
 		}
 		if (target.className == "delete") {
 			var listitem = target.parentNode
+			localStorage.removeItem(listitem.dataset.id);			
 			listitem.parentNode.removeChild(listitem);
 			let list = document.querySelector("ul")
 			if (list.childNodes.length == 1) {
