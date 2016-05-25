@@ -5,6 +5,7 @@
 var task = {}
 var stask
 var rettask
+var id
 
 document.addEventListener("DOMContentLoaded", function(event) {
   checkLocalStorage()
@@ -17,8 +18,8 @@ document.addEventListener("submit",  function getContents() {
 			return
 		} else {
 			appendListLine() 
-			appendContent(input.value)
 			addToLocalStorage(input.value)
+			appendContent(id, input.value)
 			input.value = ""
 		}
 });
@@ -61,8 +62,9 @@ function appendListLine() {
 	btn2.innerHTML = "&#10006;"
 }
 
-function appendContent(inputcontent) {
+function appendContent(id, inputcontent) {
 	let listLine = document.querySelector("ul").lastChild
+	listLine.dataset.id = id
 	listLine.querySelector("p").innerHTML = inputcontent
 }
 
@@ -70,7 +72,7 @@ function addToLocalStorage (content) {
 		task.content = content
 		task.status = 'active'
 		stask = JSON.stringify(task)
-		var id = 'task' + (localStorage.length + 1)
+		id = 'task' + (localStorage.length + 1)
 		localStorage.setItem(id, stask)
 }
 
@@ -78,7 +80,7 @@ function checkLocalStorage() {
 	for (var i = 0; i < localStorage.length; i++) {
 		rettask = JSON.parse(localStorage.getItem(localStorage.key(i)))
 		appendListLine() 
-		appendContent(rettask.content)
+		appendContent(localStorage.key(i), rettask.content)
 		rettask = ""
 	}
 }
