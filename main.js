@@ -1,14 +1,14 @@
-
-	
-"use strict"
+(function(){
+	"use strict"
 
 var task = {}
 var stask
 var rettask
 var id
+var idnum = 0
 
 document.addEventListener("DOMContentLoaded", function(event) {
-  checkLocalStorage()
+	checkLocalStorage()
 })
 
 document.addEventListener("submit",  function getContents() {
@@ -28,6 +28,12 @@ document.addEventListener("click", function completeRemoveTask() {
 		let target = event.target
 		if (target.className == "complete") {
 			var completedlistitem = target.parentNode
+			
+			var ret = JSON.parse(localStorage.getItem(completedlistitem.dataset.id))
+			ret.status = "completed"
+			var comptask = JSON.stringify(ret)
+			localStorage.setItem(completedlistitem.dataset.id, comptask)
+			
 			completedlistitem.classList.add("completed")
 			let btns = completedlistitem.querySelectorAll("button")
 			for (var i = 0; i < btns.length; i++) {
@@ -39,49 +45,73 @@ document.addEventListener("click", function completeRemoveTask() {
 			localStorage.removeItem(listitem.dataset.id);			
 			listitem.parentNode.removeChild(listitem);
 			let list = document.querySelector("ul")
+			let clear = document.querySelector(".clear")
 			if (list.childNodes.length == 1) {
 				list.setAttribute("hidden", "")
+				clear.setAttribute("hidden", "")
 			}
+		}
+		if (target.className == "clearall") {
+			localStorage.clear()
+			let list = document.querySelector("ul")
+			let clear = document.querySelector(".clearall")
+			var last;
+    		while (last = list.lastChild) list.removeChild(last);
+			list.setAttribute("hidden", "")
+			clear.setAttribute("hidden", "")
 		}
 })
 
 
 function appendListLine() {
 	var list = document.querySelector("ul")
+	var clear = document.querySelector(".clearall")
 	list.removeAttribute("hidden")
-	var li = document.createElement("li");
-	var p = document.createElement("p");
-	var btn1 = document.createElement("button");
-	var btn2 = document.createElement("button");
-	list.appendChild(li)
-	li.appendChild(p)
-	li.appendChild(btn1)
-	li.appendChild(btn2)
-	btn1.classList.add("complete")
-	btn1.innerHTML = "&#10003;"
-	btn2.classList.add("delete")
-	btn2.innerHTML = "&#10006;"
+	clear.removeAttribute("hidden")
+	var t = document.querySelector('template');
+	list.appendChild(t.content.cloneNode(true));
 }
 
-function appendContent(id, inputcontent) {
-	let listLine = document.querySelector("ul").lastChild
+function appendContent(id, inputcontent, status) {
+	let listLine = document.querySelector("ul").lastElementChild
 	listLine.dataset.id = id
 	listLine.querySelector("p").innerHTML = inputcontent
+	if (status == "completed") {
+		listLine.classList.add("completed")
+		let btns = listLine.querySelectorAll("button")
+			for (var i = 0; i < btns.length; i++) {
+				btns[i].setAttribute("hidden", "")
+			}
+	}
 }
 
 function addToLocalStorage (content) {
 		task.content = content
 		task.status = 'active'
 		stask = JSON.stringify(task)
-		id = 'task' + (localStorage.length + 1)
+		idnum = idnum + 1
+		id = 'task' + (idnum)
 		localStorage.setItem(id, stask)
+		localStorage.setItem('currentid', idnum)
 }
 
 function checkLocalStorage() {
 	for (var i = 0; i < localStorage.length; i++) {
-		rettask = JSON.parse(localStorage.getItem(localStorage.key(i)))
-		appendListLine() 
-		appendContent(localStorage.key(i), rettask.content)
-		rettask = ""
+		if (localStorage.key(i).startsWith('task')) {
+			rettask = JSON.parse(localStorage.getItem(localStorage.key(i)))
+			appendListLine() 
+			appendContent(localStorage.key(i), rettask.content, rettask.status)
+			rettask = ""
+		}
+		if (localStorage.key(i) == 'currentid') {
+			idnum = +localStorage.getItem(localStorage.key(i))
+		}
 	}
 }
+
+
+})()
+	
+
+
+
