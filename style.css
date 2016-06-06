@@ -2,6 +2,9 @@ body {
 	background:#f1f1f1;
 	font-family:arial, serif;
 }
+main {
+    height:100%;
+}
 section {
 	width: 600px;
     margin: 100px auto 0;
@@ -10,7 +13,6 @@ section {
 h1 {
 	text-transform:uppercase;
 	font-size:75px;
-	font-weight:bold;
 	color:#4A4A4A;
 }
 form {
@@ -35,14 +37,14 @@ input[type="submit"] {
     width: 25px;
     height: 25px;
     cursor: pointer;
-	 -webkit-transition: border 0.5s ease, color 0.5s ease;
-     -moz-transition: border 0.5s ease, color 0.5s ease;
-     -o-transition: border 0.5s ease, color 0.5s ease;
-     transition: border 0.5s ease, color 0.5s ease;
+	 -webkit-transition: color 0.5s ease, background 0.5s ease;
+     -moz-transition: color 0.5s ease, background 0.5s ease;
+     -o-transition: color 0.5s ease, background 0.5s ease;
+     transition: color 0.5s ease, background 0.5s ease;
 }
 input[type="submit"]:hover {
-	border: 1px solid #000;
-	color:#000;
+	color:#fff;
+    background: #2ebf0d;
 }
 ul {
     width: 400px;
@@ -68,25 +70,27 @@ ul li p {
 }
 ul li button {
 	background: none;
-    border: 1px solid #000;
+    border:1px solid #000;
     color: #000;
     border-radius: 15px;
     width: 25px;
     height: 25px;
     cursor: pointer;
-	 -webkit-transition: border 0.5s ease, color 0.5s ease;
-     -moz-transition: border 0.5s ease, color 0.5s ease;
-     -o-transition: border 0.5s ease, color 0.5s ease;
-     transition: border 0.5s ease, color 0.5s ease;
+	 -webkit-transition: background 0.5s ease, color 0.5s ease;
+     -moz-transition: background 0.5s ease, color 0.5s ease;
+     -o-transition: background 0.5s ease, color 0.5s ease;
+     transition: background 0.5s ease, color 0.5s ease;
 	 margin:0 5px;
 }
 ul li .complete:hover {
-	border: 1px solid green;
-	color:green;
+	background: #2ebf0d;
+	color:#fff;
+    border:none;
 }
 ul li .delete:hover {
-	border: 1px solid red;
-	color:red;
+    background: #dc1818;
+    color:#fff;
+    border:none;
 }
 .completed {
 	position:relative;
@@ -102,4 +106,21 @@ ul li .delete:hover {
     background-color: #CCC5C5;
     position: absolute;
     top: 14px;
+}
+footer {
+    background: #fff;
+    height:75px;
+    width:100%;
+    margin-top:25px;
+}
+footer p {
+    color: #525252;
+    font-size:10px;
+    text-transform: uppercase;
+    float: left;
+    margin: 35px 10px 0 10px;
+}
+footer img {
+    width:25px;
+    margin:25px 0 0 0;
 }

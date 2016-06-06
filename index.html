@@ -4,17 +4,29 @@
 		<title>ToDoList</title>
 		<link rel="stylesheet" type="text/css" href="reset.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<script src="main.js"></script>
+		<script src="main.js" defer></script>
 	</head>
 	<body>
-		<section>
-			<h1>Todolist</h1>
-			<form>
-				<input type="text" placeholder="Add your task here">
-				<input type="submit" value="&#10003;">
-			</form>
-			<ul hidden>
-			</ul>
-		</section>
+		<main>
+			<section>
+				<h1>Todolist</h1>
+				<form>
+					<input type="text" placeholder="Add your task here">
+					<input type="submit" value="&#10003;">
+				</form>
+				<ul hidden>
+				</ul>
+				<button class="clearall" hidden>Clear All</button>
+			</section>
+			<template>
+				<li><p></p><button class="complete">&#10003;</button><button class="delete">&#10006;</button></li>
+			</template>
+		</main>
+		<footer>
+			<p>created by Max Chertenkov</p>
+			<a href="https://github.com/maxchertenkov" target="_blank"><img src="github-logo.png"></a>
+			<a href="https://www.facebook.com/max.chort" target="_blank"><img src="facebook-logo.png"></a>
+			<a href="https://www.linkedin.com/in/maxchertenkov" target="_blank"><img src="linkedin-logo.png"></a>
+		</footer>
 	</body>
 </html>
