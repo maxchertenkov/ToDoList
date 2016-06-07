@@ -6,6 +6,8 @@ var stask
 var rettask
 var id
 var idnum = 0
+var list = document.querySelector("ul")
+
 
 document.addEventListener("DOMContentLoaded", function(event) {
 	checkLocalStorage()
@@ -44,16 +46,14 @@ document.addEventListener("click", function completeRemoveTask() {
 			var listitem = target.parentNode
 			localStorage.removeItem(listitem.dataset.id);			
 			listitem.parentNode.removeChild(listitem);
-			let list = document.querySelector("ul")
-			let clear = document.querySelector(".clear")
-			if (list.childNodes.length == 1) {
+			let clear = document.querySelector(".clearall")
+			if (list.children.length == 0) {
 				list.setAttribute("hidden", "")
 				clear.setAttribute("hidden", "")
 			}
 		}
 		if (target.className == "clearall") {
 			localStorage.clear()
-			let list = document.querySelector("ul")
 			let clear = document.querySelector(".clearall")
 			var last;
     		while (last = list.lastChild) list.removeChild(last);
@@ -64,7 +64,6 @@ document.addEventListener("click", function completeRemoveTask() {
 
 
 function appendListLine() {
-	var list = document.querySelector("ul")
 	var clear = document.querySelector(".clearall")
 	list.removeAttribute("hidden")
 	clear.removeAttribute("hidden")
@@ -74,7 +73,7 @@ function appendListLine() {
 }
 
 function appendContent(id, inputcontent, status) {
-	let listLine = document.querySelector("ul").firstElementChild 
+	let listLine = list.firstElementChild 
 	listLine.dataset.id = id
 	listLine.querySelector("p").innerHTML = inputcontent
 	if (status == "completed") {

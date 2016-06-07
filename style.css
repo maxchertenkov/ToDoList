@@ -124,3 +124,22 @@ footer img {
     width:25px;
     margin:25px 0 0 0;
 }
+.clearall {
+	background: #fff;
+    border: none;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 25px;
+    border-radius: 25px;
+    margin-top: 10px;
+    color: #4A4A4A;
+    cursor: pointer;
+	 -webkit-transition: color 0.5s ease, background 0.5s ease;
+     -moz-transition: color 0.5s ease, background 0.5s ease;
+     -o-transition: color 0.5s ease, background 0.5s ease;
+     transition: color 0.5s ease, background 0.5s ease;
+}
+.clearall:hover {
+	background:#dc1818;
+	color:#fff;
+}
