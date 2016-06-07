@@ -68,12 +68,13 @@ function appendListLine() {
 	var clear = document.querySelector(".clearall")
 	list.removeAttribute("hidden")
 	clear.removeAttribute("hidden")
-	var t = document.querySelector('template');
-	list.appendChild(t.content.cloneNode(true));
+	var t = document.querySelector('template')
+	var newline = t.content.cloneNode(true)
+	list.insertBefore(newline, list.firstElementChild)
 }
 
 function appendContent(id, inputcontent, status) {
-	let listLine = document.querySelector("ul").lastElementChild
+	let listLine = document.querySelector("ul").firstElementChild 
 	listLine.dataset.id = id
 	listLine.querySelector("p").innerHTML = inputcontent
 	if (status == "completed") {
