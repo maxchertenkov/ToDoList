@@ -108,21 +108,24 @@ ul li .delete:hover {
     top: 14px;
 }
 footer {
-    background: #fff;
-    height:75px;
-    width:100%;
-    margin-top:25px;
+    width: 600px;
+    margin: 25px auto 0;
+    text-align: center;
 }
-footer p {
+footer p, footer a {
     color: #525252;
     font-size:10px;
     text-transform: uppercase;
-    float: left;
-    margin: 35px 10px 0 10px;
+}
+footer a {
+	text-decoration:none;
+	margin-top:15px;
 }
 footer img {
     width:25px;
-    margin:25px 0 0 0;
+} 
+.social {
+	margin-top:10px;
 }
 .clearall {
 	background: #fff;
