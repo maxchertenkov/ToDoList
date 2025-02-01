@@ -28,6 +28,7 @@ document.addEventListener("submit",  function getContents() {
 
 document.addEventListener("click", function completeRemoveTask() {
 		let target = event.target
+		console.log(target)
 		if (target.className == "complete") {
 			var completedlistitem = target.parentNode
 			
